@@ -5,9 +5,9 @@ import { getTools, getModel } from '@webgametoolkit/threejs';
 const canvas = ref(null);
 
 onMounted(async () => {
-  const { setup, animate, scene, world } = getTools({
+  const { setup, animate, scene, world } = await getTools({
     stats: { init: () => {}, start: () => {}, stop: () => {} },
-    route: {},
+    route: { query: {} },
     canvas: canvas.value
   });
 
@@ -21,7 +21,7 @@ onMounted(async () => {
     defineSetup: async () => {
       await getModel(scene, world, 'geeko.glb', {
         position: [0, 0, 0],
-        scale: [2, 2, 2],
+        scale: [0.3, 0.3, 0.3],
         castShadow: true,
         receiveShadow: true,
       });
