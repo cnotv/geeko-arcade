@@ -4,7 +4,7 @@ This is a Vite + Vue project displaying a 3D cube using Three.js.
 
 ## Project Setup
 
-The project was scaffolded using `npm create vite@latest . -- --template vue`.
+The project was scaffolded using `pnpm create vite@latest . -- --template vue`.
 
 ## Dependencies
 
@@ -15,15 +15,15 @@ The project was scaffolded using `npm create vite@latest . -- --template vue`.
 
 1. Install dependencies:
    ```bash
-   npm install
+   pnpm install
    ```
 
 2. Run the development server:
    ```bash
-   npm run dev
+   pnpm dev
    ```
 
 3. Build for production:
    ```bash
-   npm run build
+   pnpm build
    ```
