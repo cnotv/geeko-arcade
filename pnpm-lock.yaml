@@ -19,10 +19,10 @@ importers:
         version: 0.181.0
       '@webgametoolkit/animation':
         specifier: github:cnotv/generative-art#path:packages/animation
-        version: https://codeload.github.com/cnotv/generative-art/tar.gz/62dd3abae88933462c1d06e6259d17a913f8c994#path:packages/animation(@dimforge/rapier3d-compat@0.19.3)(three@0.181.2)
+        version: https://codeload.github.com/cnotv/generative-art/tar.gz/a0a597afee9971809246ce468dfa45e156988cad#path:packages/animation(@dimforge/rapier3d-compat@0.19.3)(three@0.181.2)
       '@webgametoolkit/threejs':
         specifier: github:cnotv/generative-art#path:packages/threejs
-        version: https://codeload.github.com/cnotv/generative-art/tar.gz/62dd3abae88933462c1d06e6259d17a913f8c994#path:packages/threejs(@webgametoolkit/animation@https://codeload.github.com/cnotv/generative-art/tar.gz/62dd3abae88933462c1d06e6259d17a913f8c994#path:packages/animation(@dimforge/rapier3d-compat@0.19.3)(three@0.181.2))(three@0.181.2)
+        version: https://codeload.github.com/cnotv/generative-art/tar.gz/a0a597afee9971809246ce468dfa45e156988cad#path:packages/threejs(@webgametoolkit/animation@https://codeload.github.com/cnotv/generative-art/tar.gz/a0a597afee9971809246ce468dfa45e156988cad#path:packages/animation(@dimforge/rapier3d-compat@0.19.3)(three@0.181.2))(three@0.181.2)
       three:
         specifier: ^0.181.2
         version: 0.181.2
@@ -227,15 +227,15 @@ packages:
   '@vue/shared@3.5.25':
     resolution: {integrity: sha512-AbOPdQQnAnzs58H2FrrDxYj/TJfmeS2jdfEEhgiKINy+bnOANmVizIEgq1r+C5zsbs6l1CCQxtcj71rwNQ4jWg==}
 
-  '@webgametoolkit/animation@https://codeload.github.com/cnotv/generative-art/tar.gz/62dd3abae88933462c1d06e6259d17a913f8c994#path:packages/animation':
-    resolution: {path: packages/animation, tarball: https://codeload.github.com/cnotv/generative-art/tar.gz/62dd3abae88933462c1d06e6259d17a913f8c994}
+  '@webgametoolkit/animation@https://codeload.github.com/cnotv/generative-art/tar.gz/a0a597afee9971809246ce468dfa45e156988cad#path:packages/animation':
+    resolution: {path: packages/animation, tarball: https://codeload.github.com/cnotv/generative-art/tar.gz/a0a597afee9971809246ce468dfa45e156988cad}
     version: 0.0.1
     peerDependencies:
       '@dimforge/rapier3d-compat': ^0.14.0
       three: ^0.178.0
 
-  '@webgametoolkit/threejs@https://codeload.github.com/cnotv/generative-art/tar.gz/62dd3abae88933462c1d06e6259d17a913f8c994#path:packages/threejs':
-    resolution: {path: packages/threejs, tarball: https://codeload.github.com/cnotv/generative-art/tar.gz/62dd3abae88933462c1d06e6259d17a913f8c994}
+  '@webgametoolkit/threejs@https://codeload.github.com/cnotv/generative-art/tar.gz/a0a597afee9971809246ce468dfa45e156988cad#path:packages/threejs':
+    resolution: {path: packages/threejs, tarball: https://codeload.github.com/cnotv/generative-art/tar.gz/a0a597afee9971809246ce468dfa45e156988cad}
     version: 0.0.1
     peerDependencies:
       '@webgametoolkit/animation': '*'
@@ -614,14 +614,14 @@ snapshots:
 
   '@vue/shared@3.5.25': {}
 
-  '@webgametoolkit/animation@https://codeload.github.com/cnotv/generative-art/tar.gz/62dd3abae88933462c1d06e6259d17a913f8c994#path:packages/animation(@dimforge/rapier3d-compat@0.19.3)(three@0.181.2)':
+  '@webgametoolkit/animation@https://codeload.github.com/cnotv/generative-art/tar.gz/a0a597afee9971809246ce468dfa45e156988cad#path:packages/animation(@dimforge/rapier3d-compat@0.19.3)(three@0.181.2)':
     dependencies:
       '@dimforge/rapier3d-compat': 0.19.3
       three: 0.181.2
 
-  '@webgametoolkit/threejs@https://codeload.github.com/cnotv/generative-art/tar.gz/62dd3abae88933462c1d06e6259d17a913f8c994#path:packages/threejs(@webgametoolkit/animation@https://codeload.github.com/cnotv/generative-art/tar.gz/62dd3abae88933462c1d06e6259d17a913f8c994#path:packages/animation(@dimforge/rapier3d-compat@0.19.3)(three@0.181.2))(three@0.181.2)':
+  '@webgametoolkit/threejs@https://codeload.github.com/cnotv/generative-art/tar.gz/a0a597afee9971809246ce468dfa45e156988cad#path:packages/threejs(@webgametoolkit/animation@https://codeload.github.com/cnotv/generative-art/tar.gz/a0a597afee9971809246ce468dfa45e156988cad#path:packages/animation(@dimforge/rapier3d-compat@0.19.3)(three@0.181.2))(three@0.181.2)':
     dependencies:
-      '@webgametoolkit/animation': https://codeload.github.com/cnotv/generative-art/tar.gz/62dd3abae88933462c1d06e6259d17a913f8c994#path:packages/animation(@dimforge/rapier3d-compat@0.19.3)(three@0.181.2)
+      '@webgametoolkit/animation': https://codeload.github.com/cnotv/generative-art/tar.gz/a0a597afee9971809246ce468dfa45e156988cad#path:packages/animation(@dimforge/rapier3d-compat@0.19.3)(three@0.181.2)
       three: 0.181.2
 
   '@webgpu/types@0.1.67': {}
