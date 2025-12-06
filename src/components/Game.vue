@@ -2,38 +2,52 @@
 import { onMounted, ref } from "vue";
 import { getTools, getModel } from "@webgametoolkit/threejs";
 import { updateAnimation } from "@webgametoolkit/animation";
+import { chameleonConfig, setupConfig, playerConfig, botConfig } from "../config";
+import { rombusGenerator } from "../utils/generators";
+
+let currentAnimation = "Idle_A";
+
+/**
+ * Define block positions using a matrix
+ * E.g. 
+ * const positions = [
+    [0, 0, 0],
+    [0, 0, 1],
+    [0, 0, 2],
+    [0, 1, 2],
+    [-1, 0, 2],
+    [-2, 0, 0],
+    [-2, 0, 1],
+    [-2, 0, 2],
+  ]
+ */
+const positions = Array.from(rombusGenerator(10));
+
+const moveModel = (model, delta) => {
+  updateAnimation(model.mixer, model.actions[currentAnimation], delta, 4);
+  moveTo
+};
 
 const canvas = ref(null);
 const init = async () => {
-  const { setup, animate, scene, world, getDelta } = await getTools({
-    stats: { init: () => {}, start: () => {}, stop: () => {} },
-    route: { query: {} },
-    canvas: canvas.value,
-  });
-
+  const { setup, animate, scene, world, getDelta } = await getTools({ canvas: canvas.value });
   await setup({
-    config: {
-      camera: { position: [0, 5, 20] },
-      ground: { size: 10000, color: 0x559955 },
-      sky: { size: 500, color: 0x87ceeb },
-      lights: { directional: { intensity: 0.1 } },
-    },
+    config: setupConfig,
     defineSetup: async () => {
-      const geeko = await getModel(scene, world, "geeko.fbx", {
-        position: [0, -0.75, 0],
-        scale: [0.05, 0.05, 0.05],
-        boundary: 0.5,
-        castShadow: true,
-        receiveShadow: true,
-        animations: "geeko_ani.fbx",
-      });
+      const player = await getModel(scene, world, "chameleon.fbx", {...chameleonConfig, ...playerConfig });
+      const bot = await getModel(scene, world, "chameleon.fbx", { ...chameleonConfig, ...botConfig  });
+      const blocks = await Promise.all(positions.map(([x, y, z]) => getModel(scene, world, "sand_block.glb", {
+        position: [2 * x, 2 * y + 1, -2 * z],
+        scale: [0.01, 0.01, 0.01],
+      })));
 
       animate({
         beforeTimeline: () => {},
         timeline: [
           {
             action: () => {
-              updateAnimation(geeko.mixer, geeko.actions["Walk"], getDelta(), 4);
+              moveModel(player, getDelta(), playerConfig.position);
+              moveModel(bot, getDelta(), botConfig.position);
             },
           },
         ],
