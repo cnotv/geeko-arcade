@@ -1,10 +1,10 @@
-export const playerConfig = { position: [0, 1.75, 0] };
+export const playerConfig = { position: [-10, 2, 10] };
 export const botConfig = {
-  position: [5, 1.75, 0],
+  position: [10, 2, -10],
   materialColors: [0xff0000],
 };
 export const chameleonConfig = {
-  scale: [0.05, 0.05, 0.05],
+  scale: [0.03, 0.03, 0.03],
   restitution: -10,
   boundary: 0.5,
   type: "kinematicPositionBased",
