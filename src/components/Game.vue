@@ -22,6 +22,7 @@ let currentAnimation = "Idle_A";
   ]
  */
 const positions = Array.from(rombusGenerator(10));
+const blockSize = 2;
 
 const checkColliders = (model, blocks) => {
 
@@ -29,7 +30,7 @@ const checkColliders = (model, blocks) => {
 
 const moveModel = (model, delta, blocks, angle) => {
   controllerTurn(model, angle);
-  controllerForward(model, [], 0.01, delta)
+  controllerForward(model, [], blockSize, delta)
 };
 
 const getAngle = () => {
@@ -46,19 +47,20 @@ const init = async () => {
       const player = await getModel(scene, world, "chameleon.fbx", {...chameleonConfig, ...playerConfig });
       const bot = await getModel(scene, world, "chameleon.fbx", { ...chameleonConfig, ...botConfig  });
       const blocks = await Promise.all(positions.map(([x, y, z]) => getModel(scene, world, "sand_block.glb", {
-        position: [2 * x, 2 * y + 1, -2 * z],
-        scale: [0.01, 0.01, 0.01],
+        position: [blockSize * x, blockSize * y, -blockSize * z],
+        scale: [0.009, 0.009, 0.009],
       })));
 
       animate({
         beforeTimeline: () => {},
         timeline: [
           {
+            frequency: 10,
             action: () => {
               const playerAngle = getAngle();
               const botAngle = getAngle();
-              moveModel(player, getDelta(), blocks, playerAngle);
-              moveModel(bot, getDelta(), blocks, botAngle);
+              // moveModel(player, getDelta(), blocks, blockSize, playerAngle);
+              // moveModel(bot, getDelta(), blocks, blockSize, botAngle);
               checkColliders(player, blocks);
               checkColliders(bot, blocks);
             },

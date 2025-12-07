@@ -19,10 +19,10 @@ importers:
         version: 0.181.0
       '@webgametoolkit/animation':
         specifier: github:cnotv/generative-art#path:packages/animation
-        version: https://codeload.github.com/cnotv/generative-art/tar.gz/0ec138de48ef77ab78fb31e21d3306d2549420a9#path:packages/animation(three@0.181.2)
+        version: https://codeload.github.com/cnotv/generative-art/tar.gz/edd85ae44f9223bdc2afb2aca8f2cc633d223d34#path:packages/animation(three@0.181.2)
       '@webgametoolkit/threejs':
         specifier: github:cnotv/generative-art#path:packages/threejs
-        version: https://codeload.github.com/cnotv/generative-art/tar.gz/0ec138de48ef77ab78fb31e21d3306d2549420a9#path:packages/threejs(@webgametoolkit/animation@https://codeload.github.com/cnotv/generative-art/tar.gz/0ec138de48ef77ab78fb31e21d3306d2549420a9#path:packages/animation(three@0.181.2))(three@0.181.2)
+        version: https://codeload.github.com/cnotv/generative-art/tar.gz/edd85ae44f9223bdc2afb2aca8f2cc633d223d34#path:packages/threejs(@webgametoolkit/animation@https://codeload.github.com/cnotv/generative-art/tar.gz/edd85ae44f9223bdc2afb2aca8f2cc633d223d34#path:packages/animation(three@0.181.2))(three@0.181.2)
       three:
         specifier: ^0.181.2
         version: 0.181.2
@@ -227,14 +227,14 @@ packages:
   '@vue/shared@3.5.25':
     resolution: {integrity: sha512-AbOPdQQnAnzs58H2FrrDxYj/TJfmeS2jdfEEhgiKINy+bnOANmVizIEgq1r+C5zsbs6l1CCQxtcj71rwNQ4jWg==}
 
-  '@webgametoolkit/animation@https://codeload.github.com/cnotv/generative-art/tar.gz/0ec138de48ef77ab78fb31e21d3306d2549420a9#path:packages/animation':
-    resolution: {path: packages/animation, tarball: https://codeload.github.com/cnotv/generative-art/tar.gz/0ec138de48ef77ab78fb31e21d3306d2549420a9}
+  '@webgametoolkit/animation@https://codeload.github.com/cnotv/generative-art/tar.gz/edd85ae44f9223bdc2afb2aca8f2cc633d223d34#path:packages/animation':
+    resolution: {path: packages/animation, tarball: https://codeload.github.com/cnotv/generative-art/tar.gz/edd85ae44f9223bdc2afb2aca8f2cc633d223d34}
     version: 0.0.1
     peerDependencies:
       three: ^0.178.0
 
-  '@webgametoolkit/threejs@https://codeload.github.com/cnotv/generative-art/tar.gz/0ec138de48ef77ab78fb31e21d3306d2549420a9#path:packages/threejs':
-    resolution: {path: packages/threejs, tarball: https://codeload.github.com/cnotv/generative-art/tar.gz/0ec138de48ef77ab78fb31e21d3306d2549420a9}
+  '@webgametoolkit/threejs@https://codeload.github.com/cnotv/generative-art/tar.gz/edd85ae44f9223bdc2afb2aca8f2cc633d223d34#path:packages/threejs':
+    resolution: {path: packages/threejs, tarball: https://codeload.github.com/cnotv/generative-art/tar.gz/edd85ae44f9223bdc2afb2aca8f2cc633d223d34}
     version: 0.0.1
     peerDependencies:
       '@webgametoolkit/animation': '*'
@@ -613,13 +613,13 @@ snapshots:
 
   '@vue/shared@3.5.25': {}
 
-  '@webgametoolkit/animation@https://codeload.github.com/cnotv/generative-art/tar.gz/0ec138de48ef77ab78fb31e21d3306d2549420a9#path:packages/animation(three@0.181.2)':
+  '@webgametoolkit/animation@https://codeload.github.com/cnotv/generative-art/tar.gz/edd85ae44f9223bdc2afb2aca8f2cc633d223d34#path:packages/animation(three@0.181.2)':
     dependencies:
       three: 0.181.2
 
-  '@webgametoolkit/threejs@https://codeload.github.com/cnotv/generative-art/tar.gz/0ec138de48ef77ab78fb31e21d3306d2549420a9#path:packages/threejs(@webgametoolkit/animation@https://codeload.github.com/cnotv/generative-art/tar.gz/0ec138de48ef77ab78fb31e21d3306d2549420a9#path:packages/animation(three@0.181.2))(three@0.181.2)':
+  '@webgametoolkit/threejs@https://codeload.github.com/cnotv/generative-art/tar.gz/edd85ae44f9223bdc2afb2aca8f2cc633d223d34#path:packages/threejs(@webgametoolkit/animation@https://codeload.github.com/cnotv/generative-art/tar.gz/edd85ae44f9223bdc2afb2aca8f2cc633d223d34#path:packages/animation(three@0.181.2))(three@0.181.2)':
     dependencies:
-      '@webgametoolkit/animation': https://codeload.github.com/cnotv/generative-art/tar.gz/0ec138de48ef77ab78fb31e21d3306d2549420a9#path:packages/animation(three@0.181.2)
+      '@webgametoolkit/animation': https://codeload.github.com/cnotv/generative-art/tar.gz/edd85ae44f9223bdc2afb2aca8f2cc633d223d34#path:packages/animation(three@0.181.2)
       three: 0.181.2
 
   '@webgpu/types@0.1.67': {}

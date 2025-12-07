@@ -1,7 +1,8 @@
-export const playerConfig = { position: [-10, 2, 10] };
+import waterImage from "../src/assets/water.png"
+export const playerConfig = { position: [-10, 1, 10] };
 export const botConfig = {
-  position: [10, 2, -10],
-  // materialColors: [0xff0000],
+  position: [10, 1, -10],
+  materialColors: [0xff0000, 0xff0000, 0xff0000, 0xff0000, 0xff0000, 0xff0000],
 };
 export const chameleonConfig = {
   scale: [0.03, 0.03, 0.03],
@@ -18,7 +19,13 @@ export const chameleonConfig = {
 
 export const setupConfig = {
   camera: { position: [0, 5, 20] },
-  ground: { size: 10000, color: 0x99cc99 },
+  
+  ground: {
+    size: 10000,
+    texture: waterImage,
+    textureRepeat: [400, 400],
+    color: 0x99cc99,
+  },
   sky: { size: 500, color: 0x87ceeb },
   lights: {
     ambient: {
