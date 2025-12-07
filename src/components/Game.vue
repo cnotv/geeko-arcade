@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref, type Ref } from "vue";
-import { getTools, getModel } from "@webgametoolkit/threejs";
+import { getTools, getModel, colorModel } from "@webgametoolkit/threejs";
 import { AnimatedComplexModel, ComplexModel, controllerForward, controllerTurn } from "@webgametoolkit/animation";
 import { chameleonConfig, setupConfig, playerConfig, botConfig } from "../config";
 import { rombusGenerator } from "../utils/generators";
@@ -24,8 +24,24 @@ let currentAnimation: string = "Idle_A";
 const positions = Array.from(rombusGenerator(10));
 const blockSize: number = 2;
 
-const checkColliders = (model: AnimatedComplexModel, blocks: ComplexModel[]): void => {
-
+const checkColliders = (model: ComplexModel, targets: ComplexModel[], materialColors: number[], offset: number = 1.5): void => {
+  if (!model?.mesh?.position) return;
+  
+  const modelPos = model.mesh.position;
+  
+  targets.forEach((target) => {
+    if (!target?.mesh.position) return;
+    
+    const blockPos = target.mesh.position;
+    const distance = Math.sqrt(
+      Math.pow(modelPos.x - blockPos.x, 2) +
+      Math.pow(modelPos.z - blockPos.z, 2)
+    );
+    if (distance < offset) {
+      // Change target color using colorModel when colliding
+      colorModel(target.mesh, materialColors);
+    }
+  });
 };
 
 const moveModel = (model: AnimatedComplexModel, delta: number, blocks: ComplexModel[], angle: number): void => {
@@ -61,8 +77,10 @@ const init = async (): Promise<void> => {
               const botAngle: number = getAngle();
               // moveModel(player, getDelta(), blocks, blockSize, playerAngle);
               // moveModel(bot, getDelta(), blocks, blockSize, botAngle);
-              checkColliders(player, blocks);
-              checkColliders(bot, blocks);
+              
+              // Check collisions and change block colors
+              checkColliders(player, blocks, [0x00ff00]); // Green for player
+              checkColliders(bot, blocks, [0xff0000]); // Red for bot
             },
           },
         ],
