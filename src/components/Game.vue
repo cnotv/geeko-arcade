@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted, ref } from "vue";
 import { getTools, getModel } from "@webgametoolkit/threejs";
-import { updateAnimation } from "@webgametoolkit/animation";
+import { controllerForward, controllerTurn } from "@webgametoolkit/animation";
 import { chameleonConfig, setupConfig, playerConfig, botConfig } from "../config";
 import { rombusGenerator } from "../utils/generators";
 
@@ -23,9 +23,18 @@ let currentAnimation = "Idle_A";
  */
 const positions = Array.from(rombusGenerator(10));
 
-const moveModel = (model, delta) => {
-  updateAnimation(model.mixer, model.actions[currentAnimation], delta, 4);
-  moveTo
+const checkColliders = (model, blocks) => {
+
+};
+
+const moveModel = (model, delta, blocks, angle) => {
+  controllerTurn(model, angle);
+  controllerForward(model, [], 0.01, delta)
+};
+
+const getAngle = () => {
+  // Return a random angle between -1 and 1
+  return (Math.random() * 2 - 1) * 0.05;
 };
 
 const canvas = ref(null);
@@ -46,8 +55,12 @@ const init = async () => {
         timeline: [
           {
             action: () => {
-              moveModel(player, getDelta(), playerConfig.position);
-              moveModel(bot, getDelta(), botConfig.position);
+              const playerAngle = getAngle();
+              const botAngle = getAngle();
+              moveModel(player, getDelta(), blocks, playerAngle);
+              moveModel(bot, getDelta(), blocks, botAngle);
+              checkColliders(player, blocks);
+              checkColliders(bot, blocks);
             },
           },
         ],
