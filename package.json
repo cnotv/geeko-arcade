@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "@dimforge/rapier3d-compat": "^0.19.3",
+    "@sentry/vue": "^10.29.0",
     "@types/node": "^24.10.1",
     "@vitejs/plugin-vue": "^6.0.1",
     "typescript": "^5.9.3",
