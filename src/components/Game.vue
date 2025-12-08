@@ -62,7 +62,7 @@ const init = async (): Promise<void> => {
     defineSetup: async () => {
       setCameraPreset(camera, "orthographic");
       const player = await getModel(scene, world, "chameleon.fbx", {...chameleonConfig, ...playerConfig });
-      const bot = await getModel(scene, world, "chameleon.fbx", { ...chameleonConfig, ...botConfig  });
+      const bot = await getModel(scene, world, "chameleon.fbx", { ...chameleonConfig, ...botConfig });
       const blocks = await Promise.all(positions.map(([x, y, z]) => getModel(scene, world, "sand_block.glb", {
         position: [blockSize * x, blockSize * y, -blockSize * z],
         scale: [0.009, 0.009, 0.009],
@@ -74,16 +74,14 @@ const init = async (): Promise<void> => {
           {
             frequency: 20,
             action: () => {
-              const playerAngle: number = 0.1;
-              const botAngle: number = 0.1;
-              // const playerAngle: number = getAngle(player, blocks);
-              // const botAngle: number = getAngle(bot, blocks);
-              moveModel(player, getDelta(), blocks, blockSize, playerAngle);
+              const botAngle: number = getAngle(bot, blocks);
+              checkColliders(bot, blocks, [0xff0000]);
               moveModel(bot, getDelta(), blocks, blockSize, botAngle);
-              
-              // Check collisions and change block colors
-              checkColliders(player, blocks, [0x00ff00]); // Green for player
-              checkColliders(bot, blocks, [0xff0000]); // Red for bot
+            },
+          },
+          {
+            action: () => {
+              checkColliders(player, blocks, [0x00ff00]);
             },
           },
         ],
