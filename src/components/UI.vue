@@ -1,8 +1,5 @@
 <script setup>
-import { ref } from 'vue';
-
-const greenScore = ref(0);
-const redScore = ref(0);
+import { greenScore, redScore } from './composable';
 </script>
 
 <template>

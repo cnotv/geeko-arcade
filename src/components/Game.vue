@@ -2,11 +2,9 @@
 import { onMounted, ref, type Ref } from "vue";
 import { getTools, getModel, colorModel, setCameraPreset } from "@webgametoolkit/threejs";
 import { AnimatedComplexModel, ComplexModel, controllerForward, controllerTurn } from "@webgametoolkit/animation";
-import { chameleonConfig, setupConfig, playerConfig, botConfig } from "../config";
+import { setupConfig, chameleonConfig, playerConfig, botConfig } from "../config";
 import { rombusGenerator } from "../utils/generators";
-
-let currentAnimation: string = "Idle_A";
-
+import { setScore } from "./composable";
 /**
  * Define block positions using a matrix
  * E.g. 
@@ -22,13 +20,15 @@ let currentAnimation: string = "Idle_A";
   ]
  */
 const positions = Array.from(rombusGenerator(10));
+const greenBlocks = new Set<number>();
+const redBlocks = new Set<number>();
 
-const checkColliders = (model: ComplexModel, targets: ComplexModel[], materialColors: number[], offset: number = 1.5): void => {
+const checkColliders = (model: ComplexModel, targets: ComplexModel[], materialColors: number[], blockSet: Set<number>, scoreKey: 'greenScore' | 'redScore', offset: number = 1.5): void => {
   if (!model?.mesh?.position) return;
   
   const modelPos = model.mesh.position;
   
-  targets.forEach((target) => {
+  targets.forEach((target, index) => {
     if (!target?.mesh.position) return;
     
     const blockPos = target.mesh.position;
@@ -39,6 +39,11 @@ const checkColliders = (model: ComplexModel, targets: ComplexModel[], materialCo
     if (distance < offset) {
       // Change target color using colorModel when colliding
       colorModel(target.mesh, materialColors);
+      // Track this block and update score
+      if (!blockSet.has(index)) {
+        blockSet.add(index);
+        setScore(scoreKey, blockSet.size);
+      }
     }
   });
 };
@@ -48,9 +53,14 @@ const moveModel = (model: AnimatedComplexModel, delta: number, blocks: ComplexMo
   controllerForward(model, [], blockSize, delta);
 };
 
-const getAngle = (): number => {
-  // Return a random angle between -1 and 1
-  return (Math.random() * 2 - 1) * 0.05;
+/**
+ * Determine angle towards the nearest block
+ * @param model The animated model to rotate
+ * @param blocks Array of block models to find the nearest one
+ * @returns Angle in radians for the model to face the nearest block
+ */
+const getAngle = (model: AnimatedComplexModel, blocks: ComplexModel[]): number => {
+  return 0
 };
 
 const canvas: Ref<HTMLCanvasElement | null> = ref(null);
@@ -75,13 +85,13 @@ const init = async (): Promise<void> => {
             frequency: 20,
             action: () => {
               const botAngle: number = getAngle(bot, blocks);
-              checkColliders(bot, blocks, [0xff0000]);
+              checkColliders(bot, blocks, [0xff0000], redBlocks, "redScore");
               moveModel(bot, getDelta(), blocks, blockSize, botAngle);
             },
           },
           {
             action: () => {
-              checkColliders(player, blocks, [0x00ff00]);
+              checkColliders(player, blocks, [0x00ff00], greenBlocks, "greenScore");
             },
           },
         ],

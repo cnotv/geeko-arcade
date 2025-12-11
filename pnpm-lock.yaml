@@ -19,18 +19,21 @@ importers:
         version: 0.181.0
       '@webgametoolkit/animation':
         specifier: github:cnotv/generative-art#path:packages/animation
-        version: https://codeload.github.com/cnotv/generative-art/tar.gz/edd85ae44f9223bdc2afb2aca8f2cc633d223d34#path:packages/animation(three@0.181.2)
+        version: https://codeload.github.com/cnotv/generative-art/tar.gz/87c6e4b3072ecbc97861428bdddbe882e27084d5#path:packages/animation(three@0.181.2)
+      '@webgametoolkit/game':
+        specifier: github:cnotv/generative-art#path:packages/game
+        version: https://codeload.github.com/cnotv/generative-art/tar.gz/87c6e4b3072ecbc97861428bdddbe882e27084d5#path:packages/game
       '@webgametoolkit/threejs':
         specifier: github:cnotv/generative-art#path:packages/threejs
-        version: https://codeload.github.com/cnotv/generative-art/tar.gz/edd85ae44f9223bdc2afb2aca8f2cc633d223d34#path:packages/threejs(@webgametoolkit/animation@https://codeload.github.com/cnotv/generative-art/tar.gz/edd85ae44f9223bdc2afb2aca8f2cc633d223d34#path:packages/animation(three@0.181.2))(three@0.181.2)
+        version: https://codeload.github.com/cnotv/generative-art/tar.gz/87c6e4b3072ecbc97861428bdddbe882e27084d5#path:packages/threejs(@webgametoolkit/animation@https://codeload.github.com/cnotv/generative-art/tar.gz/87c6e4b3072ecbc97861428bdddbe882e27084d5#path:packages/animation(three@0.181.2))(three@0.181.2)
       three:
         specifier: ^0.181.2
         version: 0.181.2
       vite-plugin-wasm:
         specifier: ^3.5.0
-        version: 3.5.0(rolldown-vite@7.2.5(@types/node@24.10.1))
+        version: 3.5.0(rolldown-vite@7.2.5(@types/node@24.10.3))
       vue:
-        specifier: ^3.5.24
+        specifier: ^3.5.25
         version: 3.5.25(typescript@5.9.3)
     devDependencies:
       '@dimforge/rapier3d-compat':
@@ -40,17 +43,17 @@ importers:
         specifier: ^10.29.0
         version: 10.29.0(vue@3.5.25(typescript@5.9.3))
       '@types/node':
-        specifier: ^24.10.1
-        version: 24.10.1
+        specifier: ^24.10.3
+        version: 24.10.3
       '@vitejs/plugin-vue':
-        specifier: ^6.0.1
-        version: 6.0.2(rolldown-vite@7.2.5(@types/node@24.10.1))(vue@3.5.25(typescript@5.9.3))
+        specifier: ^6.0.2
+        version: 6.0.2(rolldown-vite@7.2.5(@types/node@24.10.3))(vue@3.5.25(typescript@5.9.3))
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
       vite:
         specifier: npm:rolldown-vite@7.2.5
-        version: rolldown-vite@7.2.5(@types/node@24.10.1)
+        version: rolldown-vite@7.2.5(@types/node@24.10.3)
 
 packages:
 
@@ -225,8 +228,8 @@ packages:
   '@tybys/wasm-util@0.10.1':
     resolution: {integrity: sha512-9tTaPJLSiejZKx+Bmog4uSubteqTvFrVrURwkmHixBo0G4seD0zUxp98E1DzUBJxLQ3NPwXrGKDiVjwx/DpPsg==}
 
-  '@types/node@24.10.1':
-    resolution: {integrity: sha512-GNWcUTRBgIRJD5zj+Tq0fKOJ5XZajIiBroOF0yvj2bSU1WvNdYS/dn9UxwsujGW4JX06dnHyjV2y9rRaybH0iQ==}
+  '@types/node@24.10.3':
+    resolution: {integrity: sha512-gqkrWUsS8hcm0r44yn7/xZeV1ERva/nLgrLxFRUGb7aoNMIJfZJ3AC261zDQuOAKC7MiXai1WCpYc48jAHoShQ==}
 
   '@types/stats.js@0.17.4':
     resolution: {integrity: sha512-jIBvWWShCvlBqBNIZt0KAshWpvSjhkwkEu4ZUcASoAvhmrgAUI2t1dXrjSL4xXVLB4FznPrIsX3nKXFl/Dt4vA==}
@@ -273,14 +276,18 @@ packages:
   '@vue/shared@3.5.25':
     resolution: {integrity: sha512-AbOPdQQnAnzs58H2FrrDxYj/TJfmeS2jdfEEhgiKINy+bnOANmVizIEgq1r+C5zsbs6l1CCQxtcj71rwNQ4jWg==}
 
-  '@webgametoolkit/animation@https://codeload.github.com/cnotv/generative-art/tar.gz/edd85ae44f9223bdc2afb2aca8f2cc633d223d34#path:packages/animation':
-    resolution: {path: packages/animation, tarball: https://codeload.github.com/cnotv/generative-art/tar.gz/edd85ae44f9223bdc2afb2aca8f2cc633d223d34}
+  '@webgametoolkit/animation@https://codeload.github.com/cnotv/generative-art/tar.gz/87c6e4b3072ecbc97861428bdddbe882e27084d5#path:packages/animation':
+    resolution: {path: packages/animation, tarball: https://codeload.github.com/cnotv/generative-art/tar.gz/87c6e4b3072ecbc97861428bdddbe882e27084d5}
     version: 0.0.1
     peerDependencies:
       three: ^0.178.0
 
-  '@webgametoolkit/threejs@https://codeload.github.com/cnotv/generative-art/tar.gz/edd85ae44f9223bdc2afb2aca8f2cc633d223d34#path:packages/threejs':
-    resolution: {path: packages/threejs, tarball: https://codeload.github.com/cnotv/generative-art/tar.gz/edd85ae44f9223bdc2afb2aca8f2cc633d223d34}
+  '@webgametoolkit/game@https://codeload.github.com/cnotv/generative-art/tar.gz/87c6e4b3072ecbc97861428bdddbe882e27084d5#path:packages/game':
+    resolution: {path: packages/game, tarball: https://codeload.github.com/cnotv/generative-art/tar.gz/87c6e4b3072ecbc97861428bdddbe882e27084d5}
+    version: 0.0.1
+
+  '@webgametoolkit/threejs@https://codeload.github.com/cnotv/generative-art/tar.gz/87c6e4b3072ecbc97861428bdddbe882e27084d5#path:packages/threejs':
+    resolution: {path: packages/threejs, tarball: https://codeload.github.com/cnotv/generative-art/tar.gz/87c6e4b3072ecbc97861428bdddbe882e27084d5}
     version: 0.0.1
     peerDependencies:
       '@webgametoolkit/animation': '*'
@@ -627,7 +634,7 @@ snapshots:
       tslib: 2.8.1
     optional: true
 
-  '@types/node@24.10.1':
+  '@types/node@24.10.3':
     dependencies:
       undici-types: 7.16.0
 
@@ -645,10 +652,10 @@ snapshots:
 
   '@types/webxr@0.5.24': {}
 
-  '@vitejs/plugin-vue@6.0.2(rolldown-vite@7.2.5(@types/node@24.10.1))(vue@3.5.25(typescript@5.9.3))':
+  '@vitejs/plugin-vue@6.0.2(rolldown-vite@7.2.5(@types/node@24.10.3))(vue@3.5.25(typescript@5.9.3))':
     dependencies:
       '@rolldown/pluginutils': 1.0.0-beta.50
-      vite: rolldown-vite@7.2.5(@types/node@24.10.1)
+      vite: rolldown-vite@7.2.5(@types/node@24.10.3)
       vue: 3.5.25(typescript@5.9.3)
 
   '@vue/compiler-core@3.5.25':
@@ -705,13 +712,15 @@ snapshots:
 
   '@vue/shared@3.5.25': {}
 
-  '@webgametoolkit/animation@https://codeload.github.com/cnotv/generative-art/tar.gz/edd85ae44f9223bdc2afb2aca8f2cc633d223d34#path:packages/animation(three@0.181.2)':
+  '@webgametoolkit/animation@https://codeload.github.com/cnotv/generative-art/tar.gz/87c6e4b3072ecbc97861428bdddbe882e27084d5#path:packages/animation(three@0.181.2)':
     dependencies:
       three: 0.181.2
 
-  '@webgametoolkit/threejs@https://codeload.github.com/cnotv/generative-art/tar.gz/edd85ae44f9223bdc2afb2aca8f2cc633d223d34#path:packages/threejs(@webgametoolkit/animation@https://codeload.github.com/cnotv/generative-art/tar.gz/edd85ae44f9223bdc2afb2aca8f2cc633d223d34#path:packages/animation(three@0.181.2))(three@0.181.2)':
+  '@webgametoolkit/game@https://codeload.github.com/cnotv/generative-art/tar.gz/87c6e4b3072ecbc97861428bdddbe882e27084d5#path:packages/game': {}
+
+  '@webgametoolkit/threejs@https://codeload.github.com/cnotv/generative-art/tar.gz/87c6e4b3072ecbc97861428bdddbe882e27084d5#path:packages/threejs(@webgametoolkit/animation@https://codeload.github.com/cnotv/generative-art/tar.gz/87c6e4b3072ecbc97861428bdddbe882e27084d5#path:packages/animation(three@0.181.2))(three@0.181.2)':
     dependencies:
-      '@webgametoolkit/animation': https://codeload.github.com/cnotv/generative-art/tar.gz/edd85ae44f9223bdc2afb2aca8f2cc633d223d34#path:packages/animation(three@0.181.2)
+      '@webgametoolkit/animation': https://codeload.github.com/cnotv/generative-art/tar.gz/87c6e4b3072ecbc97861428bdddbe882e27084d5#path:packages/animation(three@0.181.2)
       three: 0.181.2
 
   '@webgpu/types@0.1.67': {}
@@ -800,7 +809,7 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
-  rolldown-vite@7.2.5(@types/node@24.10.1):
+  rolldown-vite@7.2.5(@types/node@24.10.3):
     dependencies:
       '@oxc-project/runtime': 0.97.0
       fdir: 6.5.0(picomatch@4.0.3)
@@ -810,7 +819,7 @@ snapshots:
       rolldown: 1.0.0-beta.50
       tinyglobby: 0.2.15
     optionalDependencies:
-      '@types/node': 24.10.1
+      '@types/node': 24.10.3
       fsevents: 2.3.3
 
   rolldown@1.0.0-beta.50:
@@ -849,9 +858,9 @@ snapshots:
 
   undici-types@7.16.0: {}
 
-  vite-plugin-wasm@3.5.0(rolldown-vite@7.2.5(@types/node@24.10.1)):
+  vite-plugin-wasm@3.5.0(rolldown-vite@7.2.5(@types/node@24.10.3)):
     dependencies:
-      vite: rolldown-vite@7.2.5(@types/node@24.10.1)
+      vite: rolldown-vite@7.2.5(@types/node@24.10.3)
 
   vue@3.5.25(typescript@5.9.3):
     dependencies:

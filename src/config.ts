@@ -19,7 +19,6 @@ export const chameleonConfig = {
 
 export const setupConfig = {
   camera: { position: [0, 5, 20] },
-  
   ground: {
     size: 10000,
     texture: waterImage,
