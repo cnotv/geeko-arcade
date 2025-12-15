@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import { onMounted, ref, type Ref } from "vue";
+import { onMounted, ref, shallowRef, type Ref } from "vue";
 import { getTools, getModel, colorModel, setCameraPreset } from "@webgametoolkit/threejs";
-import { AnimatedComplexModel, ComplexModel, controllerForward, controllerTurn } from "@webgametoolkit/animation";
+import { AnimatedComplexModel, ComplexModel, controllerForward, controllerTurn, updateAnimation } from "@webgametoolkit/animation";
 import { setupConfig, chameleonConfig, playerConfig, botConfig } from "../config";
 import { rombusGenerator } from "../utils/generators";
 import { setScore } from "./composable";
+import { createControls } from "@webgametoolkit/controls";
+
 /**
  * Define block positions using a matrix
  * E.g. 
@@ -48,9 +50,9 @@ const checkColliders = (model: ComplexModel, targets: ComplexModel[], materialCo
   });
 };
 
-const moveModel = (model: AnimatedComplexModel, delta: number, blocks: ComplexModel[], blockSize: number, angle: number): void => {
+const moveModel = (model: AnimatedComplexModel, delta: number, blocks: ComplexModel[], blockSize: number, angle: number, backward?: boolean): void => {
   controllerTurn(model, angle);
-  controllerForward(model, [], blockSize, delta);
+  controllerForward(model, [], blockSize, delta, 'Idle_A', backward);
 };
 
 /**
@@ -63,9 +65,41 @@ const getAngle = (model: AnimatedComplexModel, blocks: ComplexModel[]): number =
   return 0
 };
 
+
+const currentActions = shallowRef({});
+const bindings = {
+  mapping: {
+    keyboard: {
+      Enter: "toggle-move",
+      a: "left",
+      d: "right",
+      w: "forward",
+      s: "backward",
+    },
+    gamepad: {
+      left: "left",
+      right: "right",
+      forward: "forward",
+      backward: "backward",
+    },
+  },
+  onAction: (action: any, trigger: any, device: any) => {
+    if (currentActions.value[action]) return; // Prevent multiple triggers from the keyboard
+    currentActions.value = {
+      ...currentActions.value,
+      [action]: { action, trigger, device },
+    };
+  },
+  onRelease: (action: any) => {
+    currentActions.value = { ...currentActions.value, [action]: null };
+  },
+};
+createControls(bindings);
+
 const canvas: Ref<HTMLCanvasElement | null> = ref(null);
 const init = async (): Promise<void> => {
   const blockSize: number = 2;
+  const frequency: number = 20;
   const { setup, animate, scene, world, getDelta, camera } = await getTools({ canvas: canvas.value! });
   await setup({
     config: setupConfig,
@@ -82,7 +116,8 @@ const init = async (): Promise<void> => {
         beforeTimeline: () => {},
         timeline: [
           {
-            frequency: 20,
+            name: "Update Bot",
+            frequency: frequency,
             action: () => {
               const botAngle: number = getAngle(bot, blocks);
               checkColliders(bot, blocks, [0xff0000], redBlocks, "redScore");
@@ -90,8 +125,17 @@ const init = async (): Promise<void> => {
             },
           },
           {
+            name: "Update Player",
+            frequency: frequency,
             action: () => {
               checkColliders(player, blocks, [0x00ff00], greenBlocks, "greenScore");
+              if (['left', 'right', 'forward', 'backward'].some((key) => currentActions.value[key])) {
+                let angle = 0;
+                if (currentActions.value["left"]) angle += 90;
+                if (currentActions.value["right"]) angle -= 90;
+                moveModel(player, getDelta(), blocks, blockSize, angle, !!currentActions.value["backward"]);
+                // updateAnimation(player, { currentActions: currentActions.value
+              }
             },
           },
         ],
