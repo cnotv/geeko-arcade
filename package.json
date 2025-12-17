@@ -11,10 +11,10 @@
   },
   "dependencies": {
     "@types/three": "^0.181.0",
-    "@webgametoolkit/animation": "github:cnotv/generative-art#path:packages/animation",
-    "@webgametoolkit/game": "github:cnotv/generative-art#path:packages/game",
-    "@webgametoolkit/threejs": "github:cnotv/generative-art#path:packages/threejs",
-    "@webgametoolkit/controls": "github:cnotv/generative-art#path:packages/controls",
+    "@webgamekit/animation": "github:cnotv/generative-art#path:packages/animation",
+    "@webgamekit/game": "github:cnotv/generative-art#path:packages/game",
+    "@webgamekit/threejs": "github:cnotv/generative-art#path:packages/threejs",
+    "@webgamekit/controls": "github:cnotv/generative-art#path:packages/controls",
     "three": "^0.181.2",
     "vite-plugin-wasm": "^3.5.0",
     "vue": "^3.5.25"
@@ -30,7 +30,7 @@
   "pnpm": {
     "overrides": {
       "vite": "npm:rolldown-vite@7.2.5",
-      "@webgametoolkit/animation": "github:cnotv/generative-art#path:packages/animation"
+      "@webgamekit/animation": "github:cnotv/generative-art#path:packages/animation"
     }
   }
 }

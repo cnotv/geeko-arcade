@@ -1,6 +1,6 @@
 
 import { computed, onUnmounted, shallowRef } from 'vue';
-import { createGame } from '@webgametoolkit/game';
+import { createGame } from '@webgamekit/game';
 
 // Access the same game state instance
 const gameState = shallowRef();

@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { onMounted, ref, shallowRef, type Ref } from "vue";
-import { getTools, getModel, colorModel, setCameraPreset } from "@webgametoolkit/threejs";
-import { AnimatedComplexModel, ComplexModel, controllerForward, controllerTurn, updateAnimation } from "@webgametoolkit/animation";
+import { onMounted, onUnmounted, ref, shallowRef, type Ref } from "vue";
+import { getTools, getModel, colorModel, setCameraPreset } from "@webgamekit/threejs";
+import { AnimatedComplexModel, ComplexModel, controllerForward, controllerTurn } from "@webgamekit/animation";
 import { setupConfig, chameleonConfig, playerConfig, botConfig } from "../config";
 import { rombusGenerator } from "../utils/generators";
 import { setScore } from "./composable";
-import { createControls } from "@webgametoolkit/controls";
+import { createControls } from "@webgamekit/controls";
 
 /**
  * Define block positions using a matrix
@@ -64,7 +64,6 @@ const moveModel = (model: AnimatedComplexModel, delta: number, blocks: ComplexMo
 const getAngle = (model: AnimatedComplexModel, blocks: ComplexModel[]): number => {
   return 0
 };
-
 
 const currentActions = shallowRef({});
 const bindings = {
@@ -144,7 +143,13 @@ const init = async (): Promise<void> => {
   });
 };
 
-onMounted(async () => init());
+onMounted(async () => {
+  init()
+  window.addEventListener("resize", init);
+});
+onUnmounted(() => {
+  window.removeEventListener("resize", init);
+});
 </script>
 
 <template>

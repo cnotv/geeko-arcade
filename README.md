@@ -9,7 +9,7 @@ The project was scaffolded using `pnpm create vite@latest . -- --template vue`.
 ## Dependencies
 
 - `vue`
-- `three` (Used instead of `@webgametoolkit/threejs` and `@webgametoolkit/animation` as they were not found)
+- `three` (Used instead of `@webgamekit/threejs` and `@webgamekit/animation` as they were not found)
 
 ## Running the Project
 
