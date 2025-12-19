@@ -12,18 +12,18 @@
   "dependencies": {
     "@types/three": "^0.181.0",
     "@webgamekit/animation": "github:cnotv/generative-art#path:packages/animation",
+    "@webgamekit/controls": "github:cnotv/generative-art#path:packages/controls",
     "@webgamekit/game": "github:cnotv/generative-art#path:packages/game",
     "@webgamekit/threejs": "github:cnotv/generative-art#path:packages/threejs",
-    "@webgamekit/controls": "github:cnotv/generative-art#path:packages/controls",
     "three": "^0.181.2",
     "vite-plugin-wasm": "^3.5.0",
-    "vue": "^3.5.25"
+    "vue": "^3.5.26"
   },
   "devDependencies": {
     "@dimforge/rapier3d-compat": "^0.19.3",
-    "@sentry/vue": "^10.29.0",
-    "@types/node": "^24.10.3",
-    "@vitejs/plugin-vue": "^6.0.2",
+    "@sentry/vue": "^10.32.0",
+    "@types/node": "^24.10.4",
+    "@vitejs/plugin-vue": "^6.0.3",
     "typescript": "^5.9.3",
     "vite": "npm:rolldown-vite@7.2.5"
   },

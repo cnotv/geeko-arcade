@@ -65,35 +65,36 @@ const getAngle = (model: AnimatedComplexModel, blocks: ComplexModel[]): number =
   return 0
 };
 
-const currentActions = shallowRef({});
 const bindings = {
   mapping: {
     keyboard: {
+      " ": "jump",
       Enter: "toggle-move",
-      a: "left",
-      d: "right",
-      w: "forward",
-      s: "backward",
+      a: "turn-left",
+      d: "turn-right",
+      w: "moving",
+      s: "moving",
     },
     gamepad: {
-      left: "left",
-      right: "right",
-      forward: "forward",
-      backward: "backward",
+      cross: "jump",
+      circle: "toggle-move",
+      'dpad-left': "turn-left",
+      'dpad-right': "turn-right",
+      'dpad-down': "moving",
+      'dpad-up': "moving",
+    },
+    touch: {
+      tap: "jump",
     },
   },
-  onAction: (action: any, trigger: any, device: any) => {
-    if (currentActions.value[action]) return; // Prevent multiple triggers from the keyboard
-    currentActions.value = {
-      ...currentActions.value,
-      [action]: { action, trigger, device },
-    };
-  },
-  onRelease: (action: any) => {
-    currentActions.value = { ...currentActions.value, [action]: null };
+  onAction: (action: string) => {
+    switch (action) {
+      case "jump":
+        break;
+    }
   },
 };
-createControls(bindings);
+const { destroyControls, remapControlsOptions, currentActions } = createControls(bindings);
 
 const canvas: Ref<HTMLCanvasElement | null> = ref(null);
 const init = async (): Promise<void> => {
@@ -110,7 +111,7 @@ const init = async (): Promise<void> => {
         position: [blockSize * x, blockSize * y, -blockSize * z],
         scale: [0.009, 0.009, 0.009],
       })));
-
+      remapControlsOptions(bindings);
       animate({
         beforeTimeline: () => {},
         timeline: [
@@ -128,12 +129,12 @@ const init = async (): Promise<void> => {
             frequency: frequency,
             action: () => {
               checkColliders(player, blocks, [0x00ff00], greenBlocks, "greenScore");
-              if (['left', 'right', 'forward', 'backward'].some((key) => currentActions.value[key])) {
+              if (["turn-left", "turn-right", "moving"].some((key) => currentActions[key])) {
                 let angle = 0;
-                if (currentActions.value["left"]) angle += 90;
-                if (currentActions.value["right"]) angle -= 90;
-                moveModel(player, getDelta(), blocks, blockSize, angle, !!currentActions.value["backward"]);
-                // updateAnimation(player, { currentActions: currentActions.value
+                if (currentActions["turn-left"]) angle += 90;
+                if (currentActions["turn-right"]) angle -= 90;
+                moveModel(player, getDelta(), blocks, blockSize, angle, false);
+                // updateAnimation(player, { currentActions: currentActions })
               }
             },
           },
@@ -149,6 +150,7 @@ onMounted(async () => {
 });
 onUnmounted(() => {
   window.removeEventListener("resize", init);
+  destroyControls();
 });
 </script>
 
